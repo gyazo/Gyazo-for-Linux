@@ -63,7 +63,7 @@ Net::HTTP::Proxy(proxy_addr, proxy_port).start(HOST,80) {|http|
   url = res.response.to_ary[1]
   puts url
   if system "which #{clipboard_cmd} >/dev/null 2>&1" then
-    system "echo #{url} | #{clipboard_cmd}"
+    system "echo -n #{url} | #{clipboard_cmd}"
   end
   system "#{browser_cmd} #{url}"
 
