@@ -3,8 +3,6 @@
 # setting
 browser_cmd = 'firefox'
 clipboard_cmd = 'xclip'
-proxy_addr = nil
-proxy_port = nil
 
 require 'net/http'
 
@@ -58,7 +56,9 @@ header ={
   'User-Agent' => UA
 }
 
-Net::HTTP::Proxy(proxy_addr, proxy_port).start(HOST,80) {|http|
+env = ENV['http_proxy']
+proxy = env ? URI(env) : {:proxy=>nil, :port=>nil}
+Net::HTTP::Proxy(proxy.host, proxy.port).start(HOST,80) {|http|
   res = http.post(CGI,data,header)
   url = res.response.to_ary[1]
   puts url
