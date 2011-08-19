@@ -19,9 +19,9 @@ tmpfile = "/tmp/image_upload#{$$}.png"
 imagefile = ARGV[0]
 
 if imagefile && File.exist?(imagefile) then
-  system "convert #{imagefile} #{tmpfile}"
+  system "convert '#{imagefile}' '#{tmpfile}'"
 else
-  system "import #{tmpfile}"
+  system "import '#{tmpfile}'"
 end
 
 if !File.exist?(tmpfile) then
@@ -68,9 +68,9 @@ Net::HTTP::Proxy(proxy_host, proxy_port).start(HOST,80) {|http|
   url = res.response.to_ary[1]
   puts url
   if system "which #{clipboard_cmd} >/dev/null 2>&1" then
-    system "echo -n #{url} | #{clipboard_cmd}"
+    system "echo -n '#{url}' | #{clipboard_cmd}"
   end
-  system "#{browser_cmd} #{url}"
+  system "#{browser_cmd} '#{url}'"
 
   # save id
   newid = res.response['X-Gyazo-Id']
