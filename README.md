@@ -4,7 +4,7 @@ http://gyazo.com/
 
 ## Debian/Ubuntu package
 
-[https://github.com/kambara/Gyazo-for-Linux/downloads](https://github.com/kambara/Gyazo-for-Linux/downloads)
+[Download a deb file](https://github.com/kambara/Gyazo-for-Linux/downloads).
 
 Install:
 
