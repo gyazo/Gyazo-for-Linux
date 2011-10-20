@@ -1,0 +1,7 @@
+.pc/
+debian/files
+debian/gyazo/
+debian/gyazo.debhelper.log
+debian/gyazo.substvars
+debian/patches/
+debian/tmp/
