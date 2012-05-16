@@ -1,0 +1,3 @@
+src/gyazo.rb      /usr/bin
+src/gyazo.desktop /usr/share/applications
+icons/gyazo.png   /usr/share/pixmaps

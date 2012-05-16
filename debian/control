@@ -1,0 +1,13 @@
+Source: gyazo
+Section: graphics
+Priority: optional
+Maintainer: Keisuke Kambara <kambara@sappari.org>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.1
+Homepage: http://gyazo.com/
+
+Package: gyazo
+Architecture: all
+Depends: ruby, imagemagick
+Description: Seriously Instant Screen-Grabbing
+ Gyazo lets you instantly grab the screen and upload the image to the web. You can easily share them on Chat, Twitter, Blog, Tumblr, etc.

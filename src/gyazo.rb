@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 # setting
-browser_cmd = 'firefox'
+browser_cmd = 'xdg-open'
 clipboard_cmd = 'xclip'
 
 require 'net/http'
