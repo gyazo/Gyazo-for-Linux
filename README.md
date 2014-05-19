@@ -20,7 +20,7 @@ Install Ruby and ImageMagick before installing Gyazo.
 3. Drag the Gyazo icon and drop into the launcher
 
 
-### License
+## License
 
 Copyright (c) 2014 Nota Inc.
 
