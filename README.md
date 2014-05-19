@@ -18,3 +18,10 @@ Install Ruby and ImageMagick before installing Gyazo.
 1. Open Unity Dash
 2. Search "Gyazo"
 3. Drag the Gyazo icon and drop into the launcher
+
+
+### License
+
+Copyright (c) 2014 Nota Inc.
+
+This software is licensed under the GPL
