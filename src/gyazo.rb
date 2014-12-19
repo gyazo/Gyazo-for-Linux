@@ -5,6 +5,7 @@ browser_cmd = 'xdg-open'
 clipboard_cmd = 'xclip'
 
 require 'net/http'
+require 'open3'
 
 # get id
 idfile = ENV['HOME'] + "/.gyazo.id"
@@ -13,6 +14,12 @@ id = ''
 if File.exist?(idfile) then
   id = File.read(idfile).chomp
 end
+
+# get active window name
+
+active_window_id = `xprop -root | grep "_NET_ACTIVE_WINDOW(WINDOW)" | cut -d ' ' -f 5`.chomp
+out, err, status = Open3.capture3 "xwininfo -id #{active_window_id} | grep \"xwininfo: Window id: \"|sed \"s/xwininfo: Window id: #{active_window_id}//\""
+active_window_name = out.chomp
 
 # capture png file
 tmpfile = "/tmp/image_upload#{$$}.png"
@@ -39,6 +46,10 @@ CGI = '/upload.cgi'
 UA   = 'Gyazo/1.0'
 
 data = <<EOF
+--#{boundary}\r
+content-disposition: form-data; name="comment"\r
+\r
+#{active_window_name}\r
 --#{boundary}\r
 content-disposition: form-data; name="id"\r
 \r
