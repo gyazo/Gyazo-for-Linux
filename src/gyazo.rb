@@ -6,6 +6,7 @@ clipboard_cmd = 'xclip'
 
 require 'net/http'
 require 'open3'
+require 'json'
 
 # get id
 idfile = ENV['HOME'] + "/.gyazo.id"
@@ -20,6 +21,10 @@ end
 active_window_id = `xprop -root | grep "_NET_ACTIVE_WINDOW(WINDOW)" | cut -d ' ' -f 5`.chomp
 out, err, status = Open3.capture3 "xwininfo -id #{active_window_id} | grep \"xwininfo: Window id: \"|sed \"s/xwininfo: Window id: #{active_window_id}//\""
 active_window_name = out.chomp
+xuri = ""
+if active_window_name =~ /(Chrom(ium|e)|Mozilla Firefox|Iceweasel)/
+  xuri = `xdotool windowfocus #{active_window_id}; xdotool key "ctrl+l"; xdotool key "ctrl+c"; xclip -o`
+end
 
 # capture png file
 tmpfile = "/tmp/image_upload#{$$}.png"
@@ -45,11 +50,22 @@ HOST = 'gyazo.com'
 CGI = '/upload.cgi'
 UA   = 'Gyazo/1.0'
 
+metadata = JSON.generate({
+  app: active_window_name,
+  title: active_window_name,
+  url: xuri,
+  note: "#{active_window_name}\n#{xuri}"
+})
+
 data = <<EOF
 --#{boundary}\r
 content-disposition: form-data; name="comment"\r
 \r
 #{active_window_name}\r
+--#{boundary}\r
+content-disposition: form-data; name="metadata"\r
+\r
+#{metadata}\r
 --#{boundary}\r
 content-disposition: form-data; name="id"\r
 \r
