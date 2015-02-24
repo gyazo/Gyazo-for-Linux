@@ -44,7 +44,6 @@ imagedata = File.read(tmpfile)
 File.delete(tmpfile)
 
 xuri = ""
-p application_name
 if application_name =~ /(chrom(ium|e)|firefox|iceweasel)/
   xuri = `xdotool windowfocus #{active_window_id}; xdotool key "ctrl+l"; xdotool key "ctrl+c"; xclip -o`
 end
@@ -65,10 +64,6 @@ metadata = JSON.generate({
 })
 
 data = <<EOF
---#{boundary}\r
-content-disposition: form-data; name="comment"\r
-\r
-#{active_window_name}\r
 --#{boundary}\r
 content-disposition: form-data; name="metadata"\r
 \r
