@@ -22,7 +22,7 @@ active_window_id = `xprop -root | grep "_NET_ACTIVE_WINDOW(WINDOW)" | cut -d ' '
 out, err, status = Open3.capture3 "xwininfo -id #{active_window_id} | grep \"xwininfo: Window id: \"|sed \"s/xwininfo: Window id: #{active_window_id}//\""
 active_window_name = out.chomp
 xuri = ""
-if active_window_name =~ /(Chrom(ium|e)|Mozilla Firefox)/
+if active_window_name =~ /(Chrom(ium|e)|Mozilla Firefox|Iceweasel)/
   xuri = `xdotool windowfocus #{active_window_id}; xdotool key "ctrl+l"; xdotool key "ctrl+c"; xclip -o`
 end
 
