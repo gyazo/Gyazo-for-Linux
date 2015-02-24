@@ -23,7 +23,7 @@ out, err, status = Open3.capture3 "xwininfo -id #{active_window_id} | grep \"xwi
 active_window_name = out.chomp
 xuri = ""
 if active_window_name =~ /(Chrom(ium|e)|Mozilla Firefox)/
-  xuri = `xdotool windowfocus #{active_window_id}; xdotool key "ctrl+l" "ctrl+c"; xclip -o`
+  xuri = `xdotool windowfocus #{active_window_id}; xdotool key "ctrl+l"; xdotool key "ctrl+c"; xclip -o`
 end
 
 # capture png file
