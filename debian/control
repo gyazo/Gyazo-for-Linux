@@ -8,6 +8,6 @@ Homepage: http://gyazo.com/
 
 Package: gyazo
 Architecture: all
-Depends: ruby, imagemagick
+Depends: ruby, imagemagick, xdotool
 Description: Seriously Instant Screen-Grabbing
  Gyazo lets you instantly grab the screen and upload the image to the web. You can easily share them on Chat, Twitter, Blog, Tumblr, etc.
