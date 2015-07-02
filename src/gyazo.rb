@@ -34,9 +34,10 @@ File.delete(tmpfile)
 # upload
 boundary = '----BOUNDARYBOUNDARY----'
 
-HOST = 'gyazo.com'
+# endpoint https://gyazo.com/api/docs
+HOST = 'upload.gyazo.com'
 CGI = '/upload.cgi'
-UA   = 'Gyazo/1.0'
+UA   = 'Gyazo/1.2'
 
 data = <<EOF
 --#{boundary}\r
