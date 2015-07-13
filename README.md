@@ -19,7 +19,18 @@ Install Ruby and ImageMagick before installing Gyazo.
 2. Search "Gyazo"
 3. Drag the Gyazo icon and drop into the launcher
 
-### Contributions
+## RHEL package
+
+[Download a rpm file](https://drive.google.com/file/d/0ByWo8sSEwB8Qbk9sOFg2UkFFU00/view?usp=sharing).
+
+### Install
+
+Install Ruby and ImageMagick before installing Gyazo.
+
+    $ sudo yum install ruby ImageMagick
+    $ sudo yum localinstall gyazo-XXX.rpm
+
+## Contributions
 Pull requests are welcome.
 
 Gyazo for Linux is maintained by Nota Inc. But the development is not as active as that of Windows / Mac versions. We can't fix a reported problem soon.
@@ -30,6 +41,6 @@ We would be glad if you send a PR to this repository.
 
 ## License
 
-Copyright (c) 2014 Nota Inc.
+Copyright (c) 2015 Nota Inc.
 
 This software is licensed under the GPL
