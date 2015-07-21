@@ -7,3 +7,5 @@ deployment:
     branch: master
     commands:
       - sh ./deb.sh
+      - package_cloud push gyazo/gyazo-for-linux/ubuntu/trusty ../gyazo*all.deb || true
+      - package_cloud push gyazo/gyazo-for-linux/ubuntu/wheezy ../gyazo*all.deb || true
