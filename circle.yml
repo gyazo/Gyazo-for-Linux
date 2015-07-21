@@ -1,0 +1,10 @@
+dependencies:
+  pre:
+    - gem install package_cloud
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - sh ./deb.sh
+      - package_cloud push gyazo/gyazo-for-linux/packages/ubuntu/trusty ../gyazo_1.0-1_all.deb
