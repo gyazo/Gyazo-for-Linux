@@ -2,10 +2,6 @@
 
 http://gyazo.com/
 
-## Debian/Ubuntu package
-
-[Download a deb file](https://github.com/kambara/Gyazo-for-Linux/downloads).
-
 ### Install
 
 Install Ruby and ImageMagick before installing Gyazo.
@@ -18,10 +14,6 @@ Install Ruby and ImageMagick before installing Gyazo.
 1. Open Unity Dash
 2. Search "Gyazo"
 3. Drag the Gyazo icon and drop into the launcher
-
-## RHEL package
-
-[Download a rpm file](https://drive.google.com/file/d/0ByWo8sSEwB8Qbk9sOFg2UkFFU00/view?usp=sharing).
 
 ### Install
 
