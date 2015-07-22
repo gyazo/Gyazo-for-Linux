@@ -28,6 +28,12 @@ If you want a problem fixed soon, we recommend you fix it by yourself.
 
 We would be glad if you send a PR to this repository.
 
+### How to release
+
+- Create Pull Request from `master` to `release`
+    - Please mark version with `git tag`
+- Build package and push to packagecloud by CircleCI when it merged
+
 ## License
 
 Copyright (c) 2014 Nota Inc.
