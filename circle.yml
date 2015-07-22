@@ -4,7 +4,7 @@ dependencies:
 
 deployment:
   production:
-    branch: master
+    branch: release
     commands:
       - sh ./deb.sh
       - bash ./circle_release.sh
