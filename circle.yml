@@ -1,0 +1,10 @@
+dependencies:
+  pre:
+    - gem install package_cloud
+
+deployment:
+  production:
+    branch: release
+    commands:
+      - sh ./deb.sh
+      - bash ./circle_release.sh
