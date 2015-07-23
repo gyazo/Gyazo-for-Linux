@@ -25,7 +25,7 @@ Gyazo use `import`(imagemagick) comand by default.
 If you have some trouble on screenshot such as cannot take correct area, take broken image...,try to change screenshot-tool by this way.
 
 Revice `/src/gyazo.rb`[here](https://github.com/gyazo/Gyazo-for-Linux/blob/3451db33631a0732097ed1cfaa87326672695a27/src/gyazo.rb#L24
-) like exsamples.
+) like examples.
 
 - scrot
 
