@@ -19,6 +19,44 @@ Install Ruby and ImageMagick before installing Gyazo.
 2. Search "Gyazo"
 3. Drag the Gyazo icon and drop into the launcher
 
+### How to change screenshot-tool
+
+Gyazo use `import`(imagemagick) comand by default.
+If you have some trouble on screenshot such as cannot take correct area, take broken image...,try to change screenshot-tool by this way.
+
+Revice `/src/gyazo.rb`[here](https://github.com/gyazo/Gyazo-for-Linux/blob/3451db33631a0732097ed1cfaa87326672695a27/src/gyazo.rb#L24
+) like exsamples.
+
+- scrot
+
+```diff
+if imagefile && File.exist?(imagefile) then
+  system "convert '#{imagefile}' '#{tmpfile}'"
+else
+-  system "import '#{tmpfile}'"
++  system "scrot -s '#{tmpfile}'"
+end
+
+```
+
+- gnome-screenshot
+
+```diff
+if imagefile && File.exist?(imagefile) then
+  system "convert '#{imagefile}' '#{tmpfile}'"
+else
+-  system "import '#{tmpfile}'"
++  system "gnome-screenshot -a -f '#{tmpfile}'"
+end
+```
+
+- other screenshot tools
+
+https://wiki.archlinux.org/index.php/Taking_a_screenshot
+
+
+
+
 ### Contributions
 Pull requests are welcome.
 
