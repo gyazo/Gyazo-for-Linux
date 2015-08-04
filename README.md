@@ -2,13 +2,9 @@
 
 http://gyazo.com/
 
-## Debian/Ubuntu package
+## Install
 
-[Download a deb file](https://github.com/kambara/Gyazo-for-Linux/downloads).
-
-### Install
-
-Install Ruby and ImageMagick before installing Gyazo.
+### apt-get
 
     $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash
     $ sudo apt-get install gyazo
@@ -19,7 +15,12 @@ Install Ruby and ImageMagick before installing Gyazo.
 2. Search "Gyazo"
 3. Drag the Gyazo icon and drop into the launcher
 
-### How to change screenshot-tool
+### yum
+
+    $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.rpm.sh | sudo bash
+    $ sudo yum install gyazo
+
+## How to change screenshot-tool
 
 Gyazo use `import`(imagemagick) comand by default.
 If you have some trouble on screenshot such as cannot take correct area, take broken image...,try to change screenshot-tool by this way.
@@ -54,9 +55,6 @@ end
 
 https://wiki.archlinux.org/index.php/Taking_a_screenshot
 
-
-
-
 ### Contributions
 Pull requests are welcome.
 
@@ -74,6 +72,6 @@ We would be glad if you send a PR to this repository.
 
 ## License
 
-Copyright (c) 2014 Nota Inc.
+Copyright (c) 2015 Nota Inc.
 
 This software is licensed under the GPL
