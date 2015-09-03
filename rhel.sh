@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PACKAGE=gyazo
-VERSION=1.0
+VERSION=1.1
 
 # archive preparation
 mkdir ${PACKAGE}-${VERSION} && cp -r src icons ${PACKAGE}-${VERSION}
