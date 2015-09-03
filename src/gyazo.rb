@@ -4,7 +4,7 @@
 browser_cmd = 'xdg-open'
 clipboard_cmd = 'xclip'
 
-require 'net/http'
+require 'net/https'
 
 # get id
 idfile = ENV['HOME'] + "/.gyazo.id"
@@ -63,8 +63,12 @@ if env then
 else
   proxy_host, proxy_port = nil, nil
 end
-Net::HTTP::Proxy(proxy_host, proxy_port).start(HOST,80) {|http|
-  res = http.post(CGI,data,header)
+https = Net::HTTP::Proxy(proxy_host, proxy_port).new(HOST,443)
+https.use_ssl = true
+https.verify_mode = OpenSSL::SSL::VERIFY_PEER
+https.verify_depth = 5
+https.start{
+  res = https.post(CGI,data,header)
   url = res.response.body
   puts url
   if system "which #{clipboard_cmd} >/dev/null 2>&1" then

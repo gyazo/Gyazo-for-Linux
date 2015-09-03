@@ -1,3 +1,9 @@
+gyazo (1.1) unstable; urgency=low
+	
+  * Use https.
+
+ -- NoNameA 774 <nonamea774@gmail.com>  Thu, 2 Jul 2015 13:53:01 +0900
+
 gyazo (1.0-1) unstable; urgency=low
 
   * Initial release.
