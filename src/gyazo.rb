@@ -64,6 +64,13 @@ metadata = JSON.generate({
   note: "#{active_window_name}\n#{xuri}"
 })
 
+metadata = JSON.generate({
+  app: active_window_name,
+  title: active_window_name,
+  url: xuri,
+  note: "#{active_window_name}\n#{xuri}"
+})
+
 data = <<EOF
 --#{boundary}\r
 content-disposition: form-data; name="metadata"\r
