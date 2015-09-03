@@ -6,6 +6,7 @@ clipboard_cmd = 'xclip'
 
 require 'net/http'
 require 'open3'
+require 'openssl'
 require 'json'
 
 # get id
