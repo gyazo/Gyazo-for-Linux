@@ -15,6 +15,10 @@ http://gyazo.com/
 2. Search "Gyazo"
 3. Drag the Gyazo icon and drop into the launcher
 
+### :warning: for Linux Mint
+
+If you install Gyazo to Linux Mint, please refer to [this issue](https://github.com/gyazo/Gyazo-for-Linux/issues/35).
+
 ### yum
 
     $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.rpm.sh | sudo bash
