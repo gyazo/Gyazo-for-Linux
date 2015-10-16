@@ -17,7 +17,7 @@ http://gyazo.com/
 
 ### :warning: for Linux Mint
 
-If you install Gyazo to Linux Mint, please reffer to [this issue](https://github.com/gyazo/Gyazo-for-Linux/issues/35).
+If you install Gyazo to Linux Mint, please refer to [this issue](https://github.com/gyazo/Gyazo-for-Linux/issues/35).
 
 ### yum
 
