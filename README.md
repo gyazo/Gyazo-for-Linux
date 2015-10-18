@@ -2,7 +2,7 @@
 
 [![Circle CI](https://circleci.com/gh/gyazo/Gyazo-for-Linux.svg?style=svg)](https://circleci.com/gh/gyazo/Gyazo-for-Linux)
 
-http://gyazo.com/
+https://gyazo.com/
 
 ## Install
 
