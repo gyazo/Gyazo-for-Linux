@@ -1,6 +1,11 @@
 #!/bin/bash
 
 declare -a deb_targets=(
+  "linuxmint/petra"
+  "linuxmint/qiana"
+  "linuxmint/rebecca"
+  "linuxmint/rafaela"
+  "linuxmint/rosa"
   "debian/squeeze"
   "debian/wheezy"
   "debian/jessie"
@@ -13,6 +18,7 @@ declare -a deb_targets=(
   "ubuntu/trusty"
   "ubuntu/utopic"
   "ubuntu/vivid"
+  "ubuntu/wily"
 )
 
 for e in ${deb_targets[@]}; do
