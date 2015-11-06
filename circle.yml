@@ -12,5 +12,5 @@ deployment:
     branch: release
     commands:
       - sh ./deb.sh
-      - bash ./circle_release.sh
+      - ruby ./circle_release.rb
       - bash ./rpm_docker.sh

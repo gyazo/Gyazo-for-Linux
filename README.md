@@ -1,6 +1,8 @@
 # Gyazo for Linux
 
-http://gyazo.com/
+[![Circle CI](https://circleci.com/gh/gyazo/Gyazo-for-Linux.svg?style=svg)](https://circleci.com/gh/gyazo/Gyazo-for-Linux)
+
+https://gyazo.com/
 
 ## Install
 
@@ -15,6 +17,12 @@ http://gyazo.com/
 2. Search "Gyazo"
 3. Drag the Gyazo icon and drop into the launcher
 
+### :warning: Trouble Shooting: Failed to install
+
+- Please refer to [this issue](https://github.com/gyazo/Gyazo-for-Linux/issues/35).
+  - Install `deb` package, write `os` to `ubuntu` and `version` to `trusty`
+  - Install `rpm` package, write `os` to `el` and `version` to `6`
+
 ### yum
 
     $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.rpm.sh | sudo bash
@@ -22,7 +30,7 @@ http://gyazo.com/
 
 ## How to change screenshot-tool
 
-Gyazo use `import`(imagemagick) comand by default.
+Gyazo use `import`(imagemagick) command by default.
 If you have some trouble on screenshot such as cannot take correct area, take broken image...,try to change screenshot-tool by this way.
 
 Revise `/src/gyazo.rb`[here](https://github.com/gyazo/Gyazo-for-Linux/blob/3451db33631a0732097ed1cfaa87326672695a27/src/gyazo.rb#L24
