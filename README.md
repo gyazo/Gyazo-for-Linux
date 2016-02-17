@@ -6,37 +6,39 @@ https://gyazo.com/
 
 ## Install
 
-### apt-get
+### `apt-get` Install
 
     $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash
     $ sudo apt-get install gyazo
+    
+### `yum` Install
 
-### How to add a Gyazo icon to Ubuntu Unity Launcher
+    $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.rpm.sh | sudo bash
+    $ sudo yum install gyazo
 
-1. Open Unity Dash
+### Add the Gyazo Icon to the Unity Launcher
+
+1. Open the Unity Dash
 2. Search "Gyazo"
-3. Drag the Gyazo icon and drop into the launcher
+3. Drag the Gyazo icon and drop it into the launcher
 
-### :warning: Trouble Shooting: Failed to install
+### :warning: Troubleshooting
+
+#### Failed to install
 
 - Please refer to [this issue](https://github.com/gyazo/Gyazo-for-Linux/issues/35).
   - Install `deb` package, write `os` to `ubuntu` and `version` to `trusty`
   - Install `rpm` package, write `os` to `el` and `version` to `6`
 
-### yum
 
-    $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.rpm.sh | sudo bash
-    $ sudo yum install gyazo
 
-## How to change screenshot-tool
+#### Change your Screenshot Command/Tool
 
-Gyazo use `import`(imagemagick) command by default.
-If you have some trouble on screenshot such as cannot take correct area, take broken image...,try to change screenshot-tool by this way.
+Gyazo uses the `import` (imagemagick) command/tool by default. If you have trouble using Gyazo when taking screenshots, such as it not taking the correct area, a broken image being taken, or something irregular, try changing your screenshot tool following these steps before submitting an Issue.
 
-Revise `/src/gyazo.rb`[here](https://github.com/gyazo/Gyazo-for-Linux/blob/3451db33631a0732097ed1cfaa87326672695a27/src/gyazo.rb#L24
-) like examples.
+Edit `/src/gyazo.rb`, found [here](https://github.com/gyazo/Gyazo-for-Linux/blob/master/src/gyazo.rb#L34), as shown below.
 
-- scrot
+- `scrot`
 
 ```diff
 if imagefile && File.exist?(imagefile) then
@@ -48,7 +50,7 @@ end
 
 ```
 
-- gnome-screenshot
+- `gnome-screenshot`
 
 ```diff
 if imagefile && File.exist?(imagefile) then
@@ -59,27 +61,22 @@ else
 end
 ```
 
-- other screenshot tools
+- [Other Screenshot Tools](https://wiki.archlinux.org/index.php/Taking_a_screenshot)
 
-https://wiki.archlinux.org/index.php/Taking_a_screenshot
+## Contributing
 
-### Contributions
-Pull requests are welcome.
+Gyazo for Linux is maintained by Nota Inc., but the development is not as active as the Windows and Mac versions of Gyazo. Fixes for reported problems and issues may take longer than usual. If you would like a problem fixed soon, we recommend you attempt to fix it and pull request the fix.
 
-Gyazo for Linux is maintained by Nota Inc. But the development is not as active as that of Windows / Mac versions. We can't fix a reported problem soon.
+Pull requests are welcome and encouraged.
 
-If you want a problem fixed soon, we recommend you fix it by yourself.
+### How to Release
 
-We would be glad if you send a PR to this repository.
-
-### How to release
-
-- Create Pull Request from `master` to `release`
-    - Please mark version with `git tag`
-- Build package and push to packagecloud by CircleCI when it merged
+- Create a pull request from `master` to `release`
+    - Mark the version using `git tag`
+- Build the package and push it to PackageCloud through CircleCI after it's merged
 
 ## License
 
-Copyright (c) 2015 Nota Inc.
+Copyright (c) 2015 Nota Inc. All rights reserved.
 
-This software is licensed under the GPL
+This software is licensed under the GPL license.
