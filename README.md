@@ -24,7 +24,7 @@ https://gyazo.com/
 
 ### :warning: Troubleshooting
 
-#### Failed to install
+#### Failed to Install
 
 - Please refer to [this issue](https://github.com/gyazo/Gyazo-for-Linux/issues/35).
   - Install `deb` package, write `os` to `ubuntu` and `version` to `trusty`
