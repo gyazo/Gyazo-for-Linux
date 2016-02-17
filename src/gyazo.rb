@@ -34,7 +34,8 @@ imagefile = ARGV[0]
 if imagefile && File.exist?(imagefile) then
   system "convert '#{imagefile}' '#{tmpfile}'"
 else
-  system "import '#{tmpfile}'"
+  command = ENV['GYAZO_SCREENSHOT_COMMAND'] || 'import'
+  system "#{command} '#{tmpfile}'"
 end
 
 if !File.exist?(tmpfile) then
