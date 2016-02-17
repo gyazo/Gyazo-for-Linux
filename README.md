@@ -38,7 +38,7 @@ Change screenshot command via environment variable `GYAZO_SCREENSHOT_COMMAND`, a
 
 - `scrot`
 
-`GYAZO_SCREENSHOT_COMMAND=scrot`
+`GYAZO_SCREENSHOT_COMMAND="scrot -s"`
 
 - `gnome-screenshot`
 
