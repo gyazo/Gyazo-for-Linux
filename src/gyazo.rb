@@ -34,7 +34,8 @@ imagefile = ARGV[0]
 if imagefile && File.exist?(imagefile) then
   system "convert '#{imagefile}' '#{tmpfile}'"
 else
-  command = ENV['GYAZO_SCREENSHOT_COMMAND'] || 'import'
+  rcfile = "ENV['home']/.gyazorc"
+  command = File.exist?(rcfile) ? File.read(rcfile).chomp : 'import'
   system "#{command} '#{tmpfile}'"
 end
 
