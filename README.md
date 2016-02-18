@@ -10,7 +10,7 @@ https://gyazo.com/
 
     $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash
     $ sudo apt-get install gyazo
-    
+
 ### `yum` Install
 
     $ curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.rpm.sh | sudo bash
@@ -30,36 +30,19 @@ https://gyazo.com/
   - Install `deb` package, write `os` to `ubuntu` and `version` to `trusty`
   - Install `rpm` package, write `os` to `el` and `version` to `6`
 
-
-
 #### Change your Screenshot Command/Tool
 
 Gyazo uses the `import` (imagemagick) command/tool by default. If you have trouble using Gyazo when taking screenshots, such as it not taking the correct area, a broken image being taken, or something irregular, try changing your screenshot tool following these steps before submitting an Issue.
 
-Edit `/src/gyazo.rb`, found [here](https://github.com/gyazo/Gyazo-for-Linux/blob/master/src/gyazo.rb#L34), as shown below.
+Change screenshot command via environment variable `GYAZO_SCREENSHOT_COMMAND`, as shown below.
 
 - `scrot`
 
-```diff
-if imagefile && File.exist?(imagefile) then
-  system "convert '#{imagefile}' '#{tmpfile}'"
-else
--  system "import '#{tmpfile}'"
-+  system "scrot -s '#{tmpfile}'"
-end
-
-```
+`GYAZO_SCREENSHOT_COMMAND="scrot -s"`
 
 - `gnome-screenshot`
 
-```diff
-if imagefile && File.exist?(imagefile) then
-  system "convert '#{imagefile}' '#{tmpfile}'"
-else
--  system "import '#{tmpfile}'"
-+  system "gnome-screenshot -a -f '#{tmpfile}'"
-end
-```
+`GYAZO_SCREENSHOT_COMMAND="gnome-screenshot -a -f"`
 
 - [Other Screenshot Tools](https://wiki.archlinux.org/index.php/Taking_a_screenshot)
 
