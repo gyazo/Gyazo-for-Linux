@@ -1,7 +1,9 @@
 gyazo (1.2) unstable; urgency=low
 
-	* change icon
-	* use screenshot command via environment variable
+  * change icon
+  * optional settings screenshot command from ~/.gyazo.config.yml
+
+ -- pastak <pasta0915@gmail.com> Thu, 18 Feb 2016 18:45:20 +0900
 
 gyazo (1.1) unstable; urgency=low
 
