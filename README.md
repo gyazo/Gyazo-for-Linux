@@ -34,18 +34,18 @@ https://gyazo.com/
 
 Gyazo uses the `import` (imagemagick) command/tool by default. If you have trouble using Gyazo when taking screenshots, such as it not taking the correct area, a broken image being taken, or something irregular, try changing your screenshot tool following these steps before submitting an Issue.
 
-Change screenshot command with `$HOME/.gyazorc`, as shown below.
+Change screenshot command with `$HOME/.gyazo.config.yml`, as shown below.
 
 - `scrot`
 
-```
-scrot -s
+```yaml
+command: scrot -s
 ```
 
 - `gnome-screenshot`
 
-```
-gnome-screenshot -a -f
+```yaml
+command: gnome-screenshot -a -f
 ```
 
 - [Other Screenshot Tools](https://wiki.archlinux.org/index.php/Taking_a_screenshot)
