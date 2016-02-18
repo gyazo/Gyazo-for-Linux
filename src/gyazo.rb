@@ -35,7 +35,7 @@ imagefile = ARGV[0]
 if imagefile && File.exist?(imagefile) then
   system "convert '#{imagefile}' '#{tmpfile}'"
 else
-  configfile = "ENV['home']/.gyazo.config.yml"
+  configfile = "#{ENV['HOME']}/.gyazo.config.yml"
   command = (File.exist?(configfile) && YAML.load_file(configfile)['command']) || 'import'
   system "#{command} '#{tmpfile}'"
 end
