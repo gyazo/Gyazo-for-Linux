@@ -8,6 +8,7 @@ require 'net/http'
 require 'open3'
 require 'openssl'
 require 'json'
+require 'yaml'
 
 # get id
 idfile = ENV['HOME'] + "/.gyazo.id"
@@ -34,7 +35,8 @@ imagefile = ARGV[0]
 if imagefile && File.exist?(imagefile) then
   system "convert '#{imagefile}' '#{tmpfile}'"
 else
-  command = ENV['GYAZO_SCREENSHOT_COMMAND'] || 'import'
+  configfile = "#{ENV['HOME']}/.gyazo.config.yml"
+  command = (File.exist?(configfile) && YAML.load_file(configfile)['command']) || 'import'
   system "#{command} '#{tmpfile}'"
 end
 
