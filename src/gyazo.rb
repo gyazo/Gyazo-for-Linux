@@ -8,6 +8,7 @@ require 'net/http'
 require 'open3'
 require 'openssl'
 require 'json'
+require 'yaml'
 
 # get id
 idfile = ENV['HOME'] + "/.gyazo.id"
@@ -34,8 +35,8 @@ imagefile = ARGV[0]
 if imagefile && File.exist?(imagefile) then
   system "convert '#{imagefile}' '#{tmpfile}'"
 else
-  rcfile = "ENV['home']/.gyazorc"
-  command = File.exist?(rcfile) ? File.read(rcfile).chomp : 'import'
+  configfile = "ENV['home']/.gyazo.config.yml"
+  command = File.exist?(configfile) ? YAML.load_file(configfile)['command'] : 'import'
   system "#{command} '#{tmpfile}'"
 end
 
