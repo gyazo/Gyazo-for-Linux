@@ -1,14 +1,25 @@
 #!/usr/bin/env ruby
 
-# setting
-browser_cmd = 'xdg-open'
-clipboard_cmd = 'xclip'
-
 require 'net/http'
 require 'open3'
 require 'openssl'
 require 'json'
 require 'yaml'
+
+# setting
+configfile = "#{ENV['HOME']}/.gyazo.config.yml"
+if File.exist?(configfile) then
+  config = YAML.load_file(configfile)
+end
+
+browser_cmd = config == nil ? 'xdg-open' : config['browser_cmd']
+clipboard_cmd = config == nil ? 'xclip' : config['clipboard_cmd']
+clipboard_opt = config == nil ? '-sel clip' : config['clipboard_opt']
+host = config == nil ? 'upload.gyazo.com' : config['host']
+cgi = config == nil ? '/upload.cgi' : config['cgi']
+ua = config == nil ? 'Gyazo/1.2' : config['ua']
+use_ssl = config == nil ? 'true' : config['use_ssl']
+http_port = config == nil ? 443 : config['http_port']
 
 # get id
 idfile = ENV['HOME'] + "/.gyazo.id"
@@ -35,7 +46,6 @@ imagefile = ARGV[0]
 if imagefile && File.exist?(imagefile) then
   system "convert '#{imagefile}' '#{tmpfile}'"
 else
-  configfile = "#{ENV['HOME']}/.gyazo.config.yml"
   command = (File.exist?(configfile) && YAML.load_file(configfile)['command']) || 'import'
   system "#{command} '#{tmpfile}'"
 end
@@ -55,11 +65,6 @@ end
 
 # upload
 boundary = '----BOUNDARYBOUNDARY----'
-
-# endpoint https://gyazo.com/api/docs
-HOST = 'upload.gyazo.com'
-CGI = '/upload.cgi'
-UA   = 'Gyazo/1.2'
 
 metadata = JSON.generate({
   app: active_window_name,
@@ -87,7 +92,7 @@ EOF
 header ={
   'Content-Length' => data.length.to_s,
   'Content-type' => "multipart/form-data; boundary=#{boundary}",
-  'User-Agent' => UA
+  'User-Agent' => ua
 }
 
 env = ENV['http_proxy']
@@ -97,16 +102,16 @@ if env then
 else
   proxy_host, proxy_port = nil, nil
 end
-https = Net::HTTP::Proxy(proxy_host, proxy_port).new(HOST,443)
-https.use_ssl = true
+https = Net::HTTP::Proxy(proxy_host, proxy_port).new(host,http_port)
+https.use_ssl = use_ssl
 https.verify_mode = OpenSSL::SSL::VERIFY_PEER
 https.verify_depth = 5
 https.start{
-  res = https.post(CGI,data,header)
+  res = https.post(cgi,data,header)
   url = res.response.body
   puts url
   if system "which #{clipboard_cmd} >/dev/null 2>&1" then
-    system "echo -n '#{url}' | #{clipboard_cmd}"
+    system "echo -n '#{url}' | #{clipboard_cmd} #{clipboard_opt}"
   end
   system "#{browser_cmd} '#{url}'"
 

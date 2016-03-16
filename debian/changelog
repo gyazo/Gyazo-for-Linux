@@ -1,9 +1,19 @@
+gyazo (1.2ubuntu1~wily1) wily; urgency=medium
+
+  * set debhelper compatibility level to 9.
+  * change Build-Depends: debhelper (>= 9.0.0)
+  * set Standards-Version: 3.9.6.
+  * add "Depends: xclip" to copy URL
+  * fix lintian warning
+
+ -- Hajime Mizuno <mizuno-as@ubuntu.com>  Fri, 04 Mar 2016 17:37:58 +0900
+
 gyazo (1.2) unstable; urgency=low
 
   * change icon
   * optional settings screenshot command from ~/.gyazo.config.yml
 
- -- pastak <pasta0915@gmail.com> Thu, 18 Feb 2016 18:45:20 +0900
+ -- pastak <pasta0915@gmail.com>  Thu, 18 Feb 2016 18:45:20 +0900
 
 gyazo (1.1) unstable; urgency=low
 
