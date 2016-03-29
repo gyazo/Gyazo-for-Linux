@@ -8,18 +8,19 @@ require 'yaml'
 
 # setting
 configfile = "#{ENV['HOME']}/.gyazo.config.yml"
+config = {}
 if File.exist?(configfile) then
   config = YAML.load_file(configfile)
 end
 
-browser_cmd = config == nil ? 'xdg-open' : config['browser_cmd']
-clipboard_cmd = config == nil ? 'xclip' : config['clipboard_cmd']
-clipboard_opt = config == nil ? '-sel clip' : config['clipboard_opt']
-host = config == nil ? 'upload.gyazo.com' : config['host']
-cgi = config == nil ? '/upload.cgi' : config['cgi']
-ua = config == nil ? 'Gyazo/1.2' : config['ua']
-use_ssl = config == nil ? 'true' : config['use_ssl']
-http_port = config == nil ? 443 : config['http_port']
+browser_cmd = config['browser_cmd'] || 'xdg-open'
+clipboard_cmd = config['clipboard_cmd'] || 'xclip'
+clipboard_opt = config['clipboard_opt'] || '-sel clip'
+host = config['host'] || 'upload.gyazo.com'
+cgi = config['cgi'] || '/upload.cgi'
+ua = config['ua'] || 'Gyazo/1.2'
+http_port = config['http_port'] || 443
+use_ssl = config['use_ssl'] == nil ? 'true' : config['use_ssl']
 
 # get id
 idfile = ENV['HOME'] + "/.gyazo.id"
