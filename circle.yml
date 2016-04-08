@@ -6,6 +6,9 @@ machine:
 dependencies:
   pre:
     - gem install package_cloud
+test:
+  override:
+    - ruby test/tc_gyazo_client.rb
 
 deployment:
   production:
