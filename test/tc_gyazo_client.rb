@@ -2,7 +2,6 @@ require "./src/gyazo_client"
 require "test/unit"
 
 class TestGyazoClient < Test::Unit::TestCase
-
   def setup
     @gyazo_client = GyazoClient.new(id_file: "./.gyazo_id_test")
   end
@@ -36,4 +35,8 @@ class TestGyazoClient < Test::Unit::TestCase
     assert(!Dir.glob('./.gyazo_id_test_*.bak').empty?)
   end
 
+  def test_upload
+    image_data = File.read('./test/images/ninja.png')
+    assert_match(/https:\/\/gyazo\.com\/[0-9a-f]{32}/, @gyazo_client.upload(image_data))
+  end
 end
