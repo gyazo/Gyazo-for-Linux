@@ -45,4 +45,9 @@ metadata = JSON.generate({
   note: "#{active_window_name}\n#{xuri}"
 })
 
-gyazo_client.upload(image_data, metadata)
+gyazo_url = gyazo_client.upload(image_data, metadata)
+
+if system "which #{gyazo_client.clipboard_cmd} >/dev/null 2>&1"
+  system "echo -n '#{gyazo_url}' | #{gyazo_client.clipboard_cmd}"
+end
+system "#{gyazo_client.browser_cmd} '#{gyazo_url}'"

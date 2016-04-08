@@ -25,7 +25,7 @@ class GyazoClient
     end
   end
 
-  def upload(image_data, metadata)
+  def upload(image_data, metadata = nil)
     boundary = '----BOUNDARYBOUNDARY----'
 
     data = <<EOF
@@ -63,15 +63,10 @@ EOF
     res = https.post(@cgi, data, header)
     gyazo_url = res.response.body
 
-    puts gyazo_url
-
-    if system "which #{@clipboard_cmd} >/dev/null 2>&1"
-      system "echo -n '#{gyazo_url}' | #{@clipboard_cmd}"
-    end
-    system "#{browser_cmd} '#{gyazo_url}'"
-
     new_id = res.response['X-Gyazo-Id']
     save_id(new_id) if new_id && new_id != ''
+
+    gyazo_url
   end
 
   private
@@ -81,9 +76,6 @@ EOF
   end
 
   def save_id(new_id)
-    puts "HOGE"
-    puts new_id
-    puts gyazo_id
     if gyazo_id != ''
       File.rename(@id_file, @id_file+Time.new.strftime("_%Y%m%d%H%M%S.bak"))
     end
