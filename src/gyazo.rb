@@ -46,8 +46,9 @@ metadata = JSON.generate({
 })
 
 gyazo_url = gyazo_client.upload(image_data, metadata)
+puts gyazo_url
 
-if system "which #{gyazo_client.clipboard_cmd} >/dev/null 2>&1"
+if system "which #{gyazo_client.clipboard_cmd.split(' ')[0]} >/dev/null 2>&1"
   system "echo -n '#{gyazo_url}' | #{gyazo_client.clipboard_cmd}"
 end
 system "#{gyazo_client.browser_cmd} '#{gyazo_url}'"
