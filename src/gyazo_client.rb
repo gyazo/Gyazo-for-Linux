@@ -3,11 +3,11 @@ require 'open3'
 require 'openssl'
 
 class GyazoClient
-  ID_FILE = ENV['HOME'] + "/.gyazotest.id"
 
   def initialize(opts = {})
     default_opts = {
-      capture_cmd:  'import',
+      id_file:       ENV['HOME'] + "/.gyazotest.id",
+      capture_cmd:   'import',
       browser_cmd:   'xdg-open',
       clipboard_cmd: 'xclip',
       host:          'upload.gyazo.com',
@@ -76,14 +76,17 @@ EOF
 
   private
   def gyazo_id
-    return '' unless File.exist?(ID_FILE)
-    id = File.read(ID_FILE).chomp
+    return '' unless File.exist?(@id_file)
+    id = File.read(@id_file).chomp
   end
 
   def save_id(new_id)
+    puts "HOGE"
+    puts new_id
+    puts gyazo_id
     if gyazo_id != ''
-      File.rename(ID_FILE, ID_FILE+Time.new.strftime("_%Y%m%d%H%M%S.bak"))
+      File.rename(@id_file, @id_file+Time.new.strftime("_%Y%m%d%H%M%S.bak"))
     end
-    File.open(ID_FILE,"w").print(new_id)
+    File.open(@id_file,"w") { |f| f.write(new_id) }
   end
 end
