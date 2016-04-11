@@ -6,7 +6,7 @@ class GyazoClient
 
   def initialize(opts = {})
     default_opts = {
-      id_file:       ENV['HOME'] + "/.gyazotest.id",
+      id_file:       ENV['HOME'] + "/.gyazo.id",
       capture_cmd:   'import',
       browser_cmd:   'xdg-open',
       clipboard_cmd: 'xclip',
