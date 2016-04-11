@@ -1,3 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'test-unit'
+gem 'package_cloud'
+
+group :development, :test do
+  gem 'test-unit'
+end
