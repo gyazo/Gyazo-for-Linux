@@ -48,6 +48,12 @@ command: scrot -s
 command: gnome-screenshot -a -f
 ```
 
+- `xfce4-screenshooter`
+
+```yaml
+command: xfce4-screenshooter -r -o gyazo
+```
+
 - [Other Screenshot Tools](https://wiki.archlinux.org/index.php/Taking_a_screenshot)
 
 ## Contributing
