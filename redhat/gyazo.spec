@@ -1,5 +1,5 @@
 Name: gyazo
-Version: 1.2
+Version: 1.2.1
 Release: 1
 Summary: Screen capture tool
 License: GPLv3+
