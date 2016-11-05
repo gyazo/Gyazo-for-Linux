@@ -8,13 +8,13 @@ https://gyazo.com/
 
 ### `apt-get` Install
 
-`curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash`
-`sudo apt-get install gyazo`
+- `curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash`
+- `sudo apt-get install gyazo`
 
 ### `yum` Install
 
-`curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.rpm.sh | sudo bash`
-`sudo yum install gyazo`
+- `curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.rpm.sh | sudo bash`
+- `sudo yum install gyazo`
 
 ### Add the Gyazo Icon to the Unity Launcher
 
