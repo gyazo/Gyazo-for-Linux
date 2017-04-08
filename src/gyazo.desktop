@@ -1,7 +1,12 @@
 [Desktop Entry]
 Name=Gyazo
 Version=1.2.1
+Comment[es]=Captura de pantalla instantánea
+Comment[fr]=Capture d'écran instantanée
 Comment=Seriously Instant Screen-Grabbing
+Keywords[es]=pantallazo;capturar;imprimir;upload;compartir;
+Keywords[fr]=cliché;capture;impression;capture d'écran;upload;partage;
+Keywords=snapshot;capture;print;screenshot;screen grabbing;upload;share;
 Exec=gyazo
 Terminal=false
 Type=Application
