@@ -9,6 +9,6 @@ json['deb'].each do |item|
   os = item['index_name']
   item['versions'].each do |version|
     target = "#{os}/#{version['index_name']}"
-    `package_cloud push gyazo/gyazo-for-linux/#{target} ../gyazo*all.deb || true`
+    `bundle exec package_cloud push gyazo/gyazo-for-linux/#{target} ../gyazo*all.deb || true`
   end
 end
