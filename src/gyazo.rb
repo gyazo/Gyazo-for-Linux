@@ -18,7 +18,7 @@ clipboard_cmd = config['clipboard_cmd'] || 'xclip'
 clipboard_opt = config['clipboard_opt'] || '-sel clip'
 host = config['host'] || 'upload.gyazo.com'
 cgi = config['cgi'] || '/upload.cgi'
-ua = config['ua'] || 'Gyazo/1.2'
+ua = config['ua'] || 'Gyazo/1.3'
 http_port = config['http_port'] || 443
 use_ssl = config['use_ssl'] == nil ? 'true' : config['use_ssl']
 
