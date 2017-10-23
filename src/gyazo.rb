@@ -45,7 +45,12 @@ tmpfile = "/tmp/image_upload#{$$}.png"
 imagefile = ARGV[0]
 
 if imagefile && File.exist?(imagefile) then
-  system "convert '#{imagefile}' '#{tmpfile}'"
+  out, err, status = Open3.capture3 "identify '#{imagefile}'"
+  if out.split("\n").size > 1 # NOTE: gif animation
+    system "cp '#{imagefile}' '#{tmpfile}'"
+  else
+    system "convert '#{imagefile}' '#{tmpfile}'"
+  end
 else
   command = (File.exist?(configfile) && YAML.load_file(configfile)['command']) || 'import'
   system "#{command} '#{tmpfile}'"

@@ -1,7 +1,9 @@
 machine:
+  ruby:
+    version: 2.3.0
   environment:
     PACKAGE: gyazo
-    VERSION: 1.2.1
+    VERSION: 1.3.0
 
 dependencies:
   pre:
