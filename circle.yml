@@ -1,4 +1,6 @@
 machine:
+  ruby:
+    version: 2.3.0
   environment:
     PACKAGE: gyazo
     VERSION: 1.2.1
