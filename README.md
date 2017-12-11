@@ -65,7 +65,9 @@ Pull requests are welcome and encouraged.
 ### How to Release
 
 
-- Create a pull request to bump version (e.g. https://github.com/gyazo/Gyazo-for-Linux/pull/96/files)
+- Create a pull request to bump version:
+  - Change version numbers (e.g. https://github.com/gyazo/Gyazo-for-Linux/pull/96/files)
+  - Modify changelog
 - And merge it to master
 - Create a pull request from `master` to `release`
     - Mark the version using `git tag`
