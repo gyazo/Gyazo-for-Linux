@@ -1,5 +1,5 @@
 Name: gyazo
-Version: 1.3.0
+Version: 1.3.1
 Release: 1
 Summary: Screen capture tool
 License: GPLv3+
@@ -35,5 +35,7 @@ rm -f /usr/bin/gyazo
 /usr/share/pixmaps/gyazo.png
 
 %changelog
+* Mon Dec 11 2017 hiroshi <hiroshi3110@gmail.com> 1.3.1
+- Fix upload user integration issue.
 * Mon Jul 13 2015 Yosuke Tamura <yosuke.tamura.tp8@gmail.com>
 - Added this SPEC file to build RPM package.

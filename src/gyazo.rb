@@ -18,7 +18,7 @@ clipboard_cmd = config['clipboard_cmd'] || 'xclip'
 clipboard_opt = config['clipboard_opt'] || '-sel clip'
 host = config['host'] || 'upload.gyazo.com'
 cgi = config['cgi'] || '/upload.cgi'
-ua = config['ua'] || 'Gyazo/1.3'
+ua = config['ua'] || 'Gyazo/1.3.1'
 http_port = config['http_port'] || 443
 use_ssl = config['use_ssl'] == nil ? 'true' : config['use_ssl']
 
@@ -98,7 +98,8 @@ EOF
 header ={
   'Content-Length' => data.length.to_s,
   'Content-type' => "multipart/form-data; boundary=#{boundary}",
-  'User-Agent' => ua
+  'User-Agent' => ua,
+  'X-Gyazo-Accept-Token' => 'required'
 }
 
 env = ENV['http_proxy']
@@ -119,7 +120,11 @@ https.start{
   if system "which #{clipboard_cmd} >/dev/null 2>&1" then
     system "echo -n '#{url}' | #{clipboard_cmd} #{clipboard_opt}"
   end
-  system "#{browser_cmd} '#{url}'"
+  openUrl = url
+  if token = res.response['X-Gyazo-Session-Token']
+    openUrl += "?token=#{token}"
+  end
+  system "#{browser_cmd} '#{openUrl}'"
 
   # save id
   newid = res.response['X-Gyazo-Id']
