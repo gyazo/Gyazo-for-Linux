@@ -64,6 +64,9 @@ Pull requests are welcome and encouraged.
 
 ### How to Release
 
+
+- Create a pull request to bump version like this https://github.com/gyazo/Gyazo-for-Linux/pull/110
+- And merge it to master
 - Create a pull request from `master` to `release`
     - Mark the version using `git tag`
 - Build the package and push it to PackageCloud through CircleCI after it's merged
