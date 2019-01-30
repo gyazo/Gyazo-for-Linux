@@ -56,6 +56,14 @@ command: xfce4-screenshooter -r -o gyazo
 
 - [Other Screenshot Tools](https://wiki.archlinux.org/index.php/Taking_a_screenshot)
 
+#### Stop opening new browser tab
+
+Add the following line to `$HOME/.gyazo.config.yml`:
+
+```yaml
+browser_cmd: echo
+```
+
 ## Contributing
 
 Gyazo for Linux is maintained by Nota Inc., but the development is not as active as the Windows and Mac versions of Gyazo. Fixes for reported problems and issues may take longer than usual. If you would like a problem fixed soon, we recommend you attempt to fix it and pull request the fix.
