@@ -25,9 +25,9 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
+    - uses: actions/checkout@v1
     - name: Build
       run: |
-        sudo service docker start
         docker build --file Dockerfile -t gyazo/build:latest .
       env:
         PACKAGE: gyazo
