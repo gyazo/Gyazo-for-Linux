@@ -10,6 +10,8 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
+    - name: Install devscripts
+      run: sudo apt-get install devscripts
     - name: Build
       run: |
         tar czvf ../${PACKAGE}_${VERSION}.orig.tar.gz src icons
