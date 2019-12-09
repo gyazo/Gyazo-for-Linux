@@ -1,0 +1,45 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+
+  deb_package:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install package-cloud
+      run: gem install package_cloud
+    - name: Install devscripts
+      run: sudo apt-get install devscripts debhelper
+    - name: Build
+      run: |
+        tar czvf ../${PACKAGE}_${VERSION}.orig.tar.gz src icons
+        debuild -us -uc -b || exit 1
+      env:
+        PACKAGE: gyazo
+        VERSION: 1.3.1
+    - name: Release
+      run: ruby ./circle_release.rb
+      env:
+        PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+
+  yum_package:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and Release
+      run: |
+        docker build -t gyazo/build:latest .
+        docker run -e PACKAGECLOUD_TOKEN=$PACKAGECLOUD_TOKEN -e VERSION=$VERSION -it gyazo/build bash -c "ruby /tmp/build/rpm_release.rb"
+      env:
+        PACKAGE: gyazo
+        VERSION: 1.3.1
+        PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
