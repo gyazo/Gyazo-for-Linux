@@ -1,0 +1,34 @@
+name: Build
+
+on: [push]
+
+jobs:
+
+  deb_package:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install devscripts
+      run: sudo apt-get install devscripts debhelper
+    - name: Build
+      run: |
+        tar czvf ../${PACKAGE}_${VERSION}.orig.tar.gz src icons
+        debuild -us -uc -b || exit 1
+      env:
+        PACKAGE: gyazo
+        VERSION: 1.3.1
+
+  yum_package:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      run: |
+        docker build --file Dockerfile -t gyazo/build:latest .
+      env:
+        PACKAGE: gyazo
+        VERSION: 1.3.1
