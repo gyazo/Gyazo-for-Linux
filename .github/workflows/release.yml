@@ -41,7 +41,7 @@ jobs:
     - name: Build and Release
       run: |
         docker build -t gyazo/build:latest .
-        docker run -e PACKAGECLOUD_TOKEN=$PACKAGECLOUD_TOKEN -e VERSION=$VERSION -it gyazo/build bash -c "ruby /tmp/build/rpm_release.rb"
+        docker run -e PACKAGECLOUD_TOKEN=$PACKAGECLOUD_TOKEN -e VERSION=$VERSION gyazo/build bash -c "ruby /tmp/build/rpm_release.rb"
       env:
         PACKAGE: gyazo
         VERSION: 1.3.1
