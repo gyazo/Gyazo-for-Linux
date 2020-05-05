@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - release
+  schedule:
+    - cron:  '0 0 * * *' # Everyday
 
 jobs:
 
