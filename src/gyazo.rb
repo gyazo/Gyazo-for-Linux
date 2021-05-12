@@ -13,6 +13,11 @@ if File.exist?(configfile) then
   config = YAML.load_file(configfile)
 end
 
+#If config file exists but is empty, set to {} to prevent future errors
+if config == false then
+  config = {}
+end
+
 browser_cmd = config['browser_cmd'] || 'xdg-open'
 clipboard_cmd = config['clipboard_cmd'] || 'xclip'
 clipboard_opt = config['clipboard_opt'] || '-sel clip'
@@ -21,6 +26,13 @@ cgi = config['cgi'] || '/upload.cgi'
 ua = config['ua'] || 'Gyazo/1.3.1'
 http_port = config['http_port'] || 443
 use_ssl = config['use_ssl'] == nil ? 'true' : config['use_ssl']
+copy_target = config['copy_target'] || 'link'
+#False would trigger the || condition if using the syntax above
+if config['open_browser'] != nil
+  open_browser = config['open_browser']
+else
+  open_browser = true
+end
 
 # get id
 idfile = ENV['HOME'] + "/.gyazo.id"
@@ -52,7 +64,7 @@ if imagefile && File.exist?(imagefile) then
     system "convert '#{imagefile}' '#{tmpfile}'"
   end
 else
-  command = (File.exist?(configfile) && YAML.load_file(configfile)['command']) || 'import'
+  command = config['command'] || 'import'
   system "#{command} '#{tmpfile}'"
 end
 
@@ -61,7 +73,6 @@ if !File.exist?(tmpfile) then
 end
 
 imagedata = File.read(tmpfile)
-File.delete(tmpfile)
 
 xuri = ""
 if application_name =~ /(chrom(ium|e)|firefox|iceweasel)/
@@ -118,13 +129,21 @@ https.start{
   url = res.response.body
   puts url
   if system "which #{clipboard_cmd} >/dev/null 2>&1" then
-    system "echo -n '#{url}' | #{clipboard_cmd} #{clipboard_opt}"
+    if copy_target == "image" and clipboard_cmd == "xclip" then
+      system "xclip #{clipboard_opt} -t image/png -i #{tmpfile}"
+    elsif copy_target == "direct" then
+      system "echo -n '#{url}.png' | #{clipboard_cmd} #{clipboard_opt}"
+    else
+      system "echo -n '#{url}' | #{clipboard_cmd} #{clipboard_opt}"
+    end    
   end
   openUrl = url
   if token = res.response['X-Gyazo-Session-Token']
     openUrl += "?token=#{token}"
   end
-  system "#{browser_cmd} '#{openUrl}'"
+  if(open_browser == true) then
+    system "#{browser_cmd} '#{openUrl}'"
+  end
 
   # save id
   newid = res.response['X-Gyazo-Id']
@@ -138,3 +157,5 @@ https.start{
     File.open(idfile,"w").print(newid)
   end
 }
+
+File.delete(tmpfile)
