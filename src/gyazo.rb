@@ -28,10 +28,9 @@ http_port = config['http_port'] || 443
 use_ssl = config['use_ssl'] == nil ? 'true' : config['use_ssl']
 copy_target = config['copy_target'] || 'link'
 #False would trigger the || condition if using the syntax above
+open_browser = true
 if config['open_browser'] != nil
   open_browser = config['open_browser']
-else
-  open_browser = true
 end
 
 # get id
