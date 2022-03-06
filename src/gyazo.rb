@@ -51,7 +51,7 @@ out, err, status = Open3.capture3 "xprop -id #{active_window_id} | grep \"_NET_W
 
 pid = out.chomp
 
-application_name = `ps -p #{pid} -o comm=`.chomp
+application_name = "ps -p #{pid} -o comm=".chomp
 # capture png file
 tmpfile = "/tmp/image_upload#{$$}.png"
 imagefile = ARGV[0]
