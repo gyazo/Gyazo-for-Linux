@@ -28,7 +28,7 @@ jobs:
         debuild -us -uc -b || exit 1
       env:
         PACKAGE: gyazo
-        VERSION: 1.3.1
+        VERSION: 1.3.2
     - name: Release
       run: ruby ./circle_release.rb
       env:
@@ -46,5 +46,5 @@ jobs:
         docker run -e PACKAGECLOUD_TOKEN=$PACKAGECLOUD_TOKEN -e VERSION=$VERSION gyazo/build bash -l -c "ruby /tmp/build/rpm_release.rb"
       env:
         PACKAGE: gyazo
-        VERSION: 1.3.1
+        VERSION: 1.3.2
         PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
