@@ -1,6 +1,7 @@
 name: Build and Release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - release
@@ -15,9 +16,9 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/setup-ruby@v1
+    - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.5'
+        ruby-version: '3.3'
     - name: Install package-cloud
       run: gem install package_cloud
     - name: Install devscripts

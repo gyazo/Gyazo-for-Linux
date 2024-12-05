@@ -1,7 +1,9 @@
 FROM centos:7
-ENV ruby_ver="2.5.7"
+ENV ruby_ver="3.3.6"
 
-RUN yum -y update
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
+    sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* && \
+    yum -y update
 RUN yum -y install epel-release
 RUN yum -y install git make autoconf curl wget rpm-build
 RUN yum -y install gcc-c++ glibc-headers openssl-devel readline libyaml-devel readline-devel zlib zlib-devel sqlite-devel bzip2
