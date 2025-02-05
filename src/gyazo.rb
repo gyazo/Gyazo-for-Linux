@@ -43,14 +43,15 @@ end
 
 # get active window name
 
-active_window_id = `xprop -root | grep "_NET_ACTIVE_WINDOW(WINDOW)" | cut -d ' ' -f 5`.chomp
+window_property = "_NET_ACTIVE_WINDOW(WINDOW)"
+active_window_id = "xprop -root | grep window_property | cut -d ' ' -f 5".chomp
 out, err, status = Open3.capture3 "xwininfo -id #{active_window_id} | grep \"xwininfo: Window id: \"|sed \"s/xwininfo: Window id: #{active_window_id}//\""
 active_window_name = out.chomp
 out, err, status = Open3.capture3 "xprop -id #{active_window_id} | grep \"_NET_WM_PID(CARDINAL)\" | sed s/_NET_WM_PID\\(CARDINAL\\)\\ =\\ //"
 
 pid = out.chomp
 
-application_name = `ps -p #{pid} -o comm=`.chomp
+application_name = "ps -p #{pid} -o comm=".chomp
 # capture png file
 tmpfile = "/tmp/image_upload#{$$}.png"
 imagefile = ARGV[0]
